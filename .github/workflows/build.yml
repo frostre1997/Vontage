@@ -15,7 +15,7 @@ jobs:
       - name: chmod permission
         run: chmod +x gradlew
 
-      - name: APK build
+      - name: Build with Gradle
         run: ./gradlew assembleDebug
 
       - name: Upload APK
