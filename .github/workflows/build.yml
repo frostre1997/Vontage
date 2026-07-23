@@ -12,9 +12,16 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-      - name: chmod permission
-        run: chmod +x gradlew
+      # 🔥 This installs Gradle and generates the wrapper for you
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.6
 
+      - name: Generate wrapper files
+        run: gradle wrapper
+
+      # Now the freshly generated ./gradlew is ready to use
       - name: Build with Gradle
         run: ./gradlew assembleDebug
 
